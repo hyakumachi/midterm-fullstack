@@ -9,7 +9,7 @@ app.use(
   })
 );
 
-app.get("/ratatouille", async (req, res) => {
+app.get("/dog", async (req, res) => {
   try {
     const response = await fetch("https://dog.ceo/api/breeds/image/random");  //placeholder url
     const data = await response.json();
