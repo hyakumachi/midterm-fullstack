@@ -11,12 +11,18 @@ app.use(
 
 app.use(express.json());
 
+<<<<<<< HEAD
 // Home route
+=======
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Dog API Backend!" });
 });
 
+<<<<<<< HEAD
 // 1. Get random dog image
+=======
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
 app.get("/dog/random", async (req, res) => {
   try {
     const response = await fetch("https://dog.ceo/api/breeds/image/random");
@@ -28,7 +34,10 @@ app.get("/dog/random", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 // 2. Get multiple random dog images
+=======
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
 app.get("/dog/random/:count", async (req, res) => {
   const { count } = req.params;
   try {
@@ -43,7 +52,10 @@ app.get("/dog/random/:count", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 // 3. Get all breeds list
+=======
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
 app.get("/dog/breeds/all", async (req, res) => {
   try {
     const response = await fetch("https://dog.ceo/api/breeds/list/all");
@@ -55,7 +67,10 @@ app.get("/dog/breeds/all", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 // 4. Get images by specific breed
+=======
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
 app.get("/dog/breed/:breed", async (req, res) => {
   const { breed } = req.params;
   try {
@@ -70,7 +85,10 @@ app.get("/dog/breed/:breed", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 // 5. Get sub-breeds list for a specific breed
+=======
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
 app.get("/dog/breed/:breed/list", async (req, res) => {
   const { breed } = req.params;
   try {
@@ -85,7 +103,10 @@ app.get("/dog/breed/:breed/list", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 // 6. Get images by breed and sub-breed
+=======
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
 app.get("/dog/breed/:breed/:subbreed", async (req, res) => {
   const { breed, subbreed } = req.params;
   try {

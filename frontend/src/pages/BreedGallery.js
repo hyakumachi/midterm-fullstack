@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function BreedGallery() {
+<<<<<<< HEAD
   const [breeds, setBreeds] = useState([]);
   const [selectedBreed, setSelectedBreed] = useState("");
   const [dogImages, setDogImages] = useState([]);
@@ -9,11 +10,22 @@ function BreedGallery() {
   const [error, setError] = useState("");
 
   // Fetch all breeds on component mount
+=======
+  // State to store the list of all dog breeds
+  const [breeds, setBreeds] = useState([]);
+  // State to store which breed the user selected
+  const [selectedBreed, setSelectedBreed] = useState("");
+  // State to store array of dog images for selected breed
+  const [dogImages, setDogImages] = useState([]);
+
+  // useEffect runs once when page loads to fetch all breeds
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
   useEffect(() => {
     fetchBreeds();
   }, []);
 
   const fetchBreeds = async () => {
+<<<<<<< HEAD
     try {
       // Call backend to get all breeds
       const response = await axios.get("http://localhost:3001/dog/breeds/all");
@@ -51,6 +63,24 @@ function BreedGallery() {
       setError("Error fetching images");
     }
     setLoading(false);
+=======
+    const response = await axios.get("http://localhost:3001/dog/breeds/all");
+    // Convert breeds object to array of breed names
+    const breedsList = Object.keys(response.data.message);
+    setBreeds(breedsList);
+  };
+
+  // Function to fetch images for a specific breed
+  const fetchBreedImages = async (breed) => {
+    // Store which breed was selected
+    setSelectedBreed(breed);
+    // Call backend with breed name
+    const response = await axios.get(
+      `http://localhost:3001/dog/breed/${breed}`
+    );
+    // Get first 12 img only
+    setDogImages(response.data.message.slice(0, 12));
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
   };
 
   return (
@@ -62,6 +92,7 @@ function BreedGallery() {
 
       <div className="card">
         <h3>Select a Breed ({breeds.length} available)</h3>
+<<<<<<< HEAD
 
         {breeds.length === 0 ? (
           <div className="loading">Loading breeds...</div>
@@ -86,6 +117,23 @@ function BreedGallery() {
       {error && <div className="error-message">{error}</div>}
 
       {dogImages.length > 0 && !loading && (
+=======
+        {/* Map through breeds array to create clickable buttons */}
+        <div className="breed-list">
+          {breeds.map((breed) => (
+            <div
+              key={breed}
+              className="breed-item"
+              onClick={() => fetchBreedImages(breed)}
+            >
+              {breed}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {dogImages.length > 0 && (
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
         <div className="card">
           <h3>
             {selectedBreed} Gallery ({dogImages.length} images)

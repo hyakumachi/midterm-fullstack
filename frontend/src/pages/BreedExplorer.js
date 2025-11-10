@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function BreedExplorer() {
+<<<<<<< HEAD
   const [breedsWithSubbreeds, setBreedsWithSubbreeds] = useState([]);
   const [selectedBreed, setSelectedBreed] = useState("");
   const [subbreeds, setSubbreeds] = useState([]);
@@ -9,11 +10,26 @@ function BreedExplorer() {
   const [dogImage, setDogImage] = useState("");
   const [loading, setLoading] = useState(false);
 
+=======
+  // State to store breeds that have sub-breeds
+  const [breedsWithSubbreeds, setBreedsWithSubbreeds] = useState([]);
+  // State to store which breed was selected
+  const [selectedBreed, setSelectedBreed] = useState("");
+  // State to store list of sub-breeds for selected breed
+  const [subbreeds, setSubbreeds] = useState([]);
+  // State to store which sub-breed was selected
+  const [selectedSubbreed, setSelectedSubbreed] = useState("");
+  // State to store the dog image URL
+  const [dogImage, setDogImage] = useState("");
+
+  // useEffect runs once when page loads to fetch breeds
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
   useEffect(() => {
     fetchBreeds();
   }, []);
 
   const fetchBreeds = async () => {
+<<<<<<< HEAD
     try {
       const response = await axios.get("http://localhost:3001/dog/breeds/all");
       if (response.data.status === "success") {
@@ -28,10 +44,22 @@ function BreedExplorer() {
     }
   };
 
+=======
+    const response = await axios.get("http://localhost:3001/dog/breeds/all");
+    const breedsData = response.data.message;
+    const breedsWithSubs = Object.entries(breedsData)
+      .filter(([breed, subs]) => subs.length > 0)
+      .map(([breed]) => breed);
+    setBreedsWithSubbreeds(breedsWithSubs);
+  };
+
+  // Function to fetch sub-breeds for a specific breed
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
   const fetchSubbreeds = async (breed) => {
     setSelectedBreed(breed);
     setSelectedSubbreed("");
     setDogImage("");
+<<<<<<< HEAD
     try {
       const response = await axios.get(
         `http://localhost:3001/dog/breed/${breed}/list`
@@ -64,6 +92,27 @@ function BreedExplorer() {
       console.error(err);
     }
     setLoading(false);
+=======
+    // Call backend to get sub-breeds list
+    const response = await axios.get(
+      `http://localhost:3001/dog/breed/${breed}/list`
+    );
+    setSubbreeds(response.data.message);
+  };
+
+  // Function to fetch a random image for selected sub-breed
+  const fetchSubbreedImage = async (subbreed) => {
+    setSelectedSubbreed(subbreed);
+    // Call backend with breed and sub-breed
+    const response = await axios.get(
+      `http://localhost:3001/dog/breed/${selectedBreed}/${subbreed}`
+    );
+    // Pick a random image from the array
+    const randomIndex = Math.floor(
+      Math.random() * response.data.message.length
+    );
+    setDogImage(response.data.message[randomIndex]);
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
   };
 
   return (
@@ -105,9 +154,13 @@ function BreedExplorer() {
         </div>
       )}
 
+<<<<<<< HEAD
       {loading && <div className="loading">Loading image...</div>}
 
       {dogImage && !loading && (
+=======
+      {dogImage && (
+>>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
         <div className="card">
           <h3>
             {selectedBreed} - {selectedSubbreed}
