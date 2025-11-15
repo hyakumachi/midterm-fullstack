@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function MultiDogGenerator() {
-<<<<<<< HEAD
   const [count, setCount] = useState(6);
   const [dogImages, setDogImages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -39,19 +38,6 @@ function MultiDogGenerator() {
     if (e.key === "Enter") {
       fetchMultipleDogs();
     }
-=======
-  // State to store the number of dogs to generate (default 6)
-  const [count, setCount] = useState(6);
-  // State to store array of dog image URLs
-  const [dogImages, setDogImages] = useState([]);
-
-  // Function to fetch multiple random dog images
-  const fetchMultipleDogs = async () => {
-    const response = await axios.get(
-      `http://localhost:3001/dog/random/${count}`
-    );
-    setDogImages(response.data.message);
->>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
   };
 
   return (
@@ -69,7 +55,6 @@ function MultiDogGenerator() {
             max="50"
             value={count}
             onChange={(e) => setCount(e.target.value)}
-<<<<<<< HEAD
             onKeyPress={handleKeyPress}
             placeholder="Enter number of dogs (1-50)"
           />
@@ -79,12 +64,6 @@ function MultiDogGenerator() {
             disabled={loading}
           >
             {loading ? "Loading..." : `Generate ${count} Dogs`}
-=======
-            placeholder="Enter number of dogs (1-50)"
-          />
-          <button className="btn" onClick={fetchMultipleDogs}>
-            Generate {count} Dogs
->>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
           </button>
         </div>
 
@@ -96,7 +75,6 @@ function MultiDogGenerator() {
             Fetches multiple random dog images in a single request (max: 50)
           </p>
         </div>
-<<<<<<< HEAD
 
         {loading && <div className="loading">Fetching {count} dogs...</div>}
         {error && <div className="error-message">{error}</div>}
@@ -106,16 +84,6 @@ function MultiDogGenerator() {
         <div className="card">
           <h3>Your {dogImages.length} Random Dogs</h3>
           <div className="dog-grid">
-=======
-      </div>
-
-      {dogImages.length > 0 && (
-        <div className="card">
-          <h3>Your {dogImages.length} Random Dogs</h3>
-          {/* Display images in a grid */}
-          <div className="dog-grid">
-            {/* img array */}
->>>>>>> d0a57e5597157b1a34978cf6e8db4b133156a2b3
             {dogImages.map((image, index) => (
               <div key={index} className="dog-card">
                 <img src={image} alt={`Dog ${index + 1}`} />

@@ -230,6 +230,45 @@ select:focus {
   background-color: #000;
 }
 
+/* Simple form styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.status-message {
+  margin-top: 12px;
+  font-weight: bold;
+  color: #333;
+}
+
+table.data-table th,
+table.data-table td {
+  border: 1px solid #ddd;
+  padding: 6px;
+  font-size: 12px;
+}
+
+table.data-table th {
+  background: #f5f5f5;
+  text-align: left;
+}
 /* Loading and error */
 .loading {
   text-align: center;
